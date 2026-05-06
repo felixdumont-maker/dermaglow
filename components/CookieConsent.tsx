@@ -10,11 +10,6 @@ type ConsentState = {
 
 const STORAGE_KEY = "dermaglow_consent";
 
-const defaultConsent: ConsentState = {
-  decided: false,
-  analytics: false,
-  marketing: false,
-};
 
 function loadConsent(): ConsentState | null {
   if (typeof window === "undefined") return null;

@@ -1,5 +1,6 @@
 import { createClient } from "@sanity/client";
 import imageUrlBuilder from "@sanity/image-url";
+import type { SanityImageSource } from "@sanity/image-url/lib/types/types";
 
 export const client = createClient({
   projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID || "your-project-id",
@@ -10,7 +11,7 @@ export const client = createClient({
 
 const builder = imageUrlBuilder(client);
 
-export function urlFor(source: any) {
+export function urlFor(source: SanityImageSource) {
   return builder.image(source);
 }
 
@@ -45,7 +46,7 @@ export interface Service {
   eyebrow: string;
   titre: string;
   description: string;
-  image?: any;
+  image?: SanityImageSource;
   inclus?: string[];
   variations?: Variation[];
   featured?: boolean;
@@ -82,7 +83,7 @@ export interface ApprochePilier {
 export interface PageAccueil {
   heroTitre?: string;
   heroSousTitre?: string;
-  approcheImage?: any;
+  approcheImage?: SanityImageSource;
   approcheTitre?: string;
   approcheTexte1?: string;
   approcheTexte2?: string;
@@ -91,7 +92,7 @@ export interface PageAccueil {
 export interface PageAPropos {
   heroTitre?: string;
   heroSousTitre?: string;
-  bioImage?: any;
+  bioImage?: SanityImageSource;
   bioTexte1?: string;
   bioTexte2?: string;
   pourQui?: PourQuiItem[];

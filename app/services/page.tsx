@@ -3,7 +3,6 @@ import RevealSection from "@/components/RevealSection";
 import Link from "next/link";
 import { getServices, urlFor } from "@/lib/sanity";
 
-const DEFAULT_BG = ["var(--beige-clair)", "var(--gris-blanc)"];
 
 const facial = {
   numero: "01",
