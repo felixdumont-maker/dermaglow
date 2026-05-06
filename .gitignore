@@ -28,11 +28,8 @@ yarn-error.log*
 # local env files
 .env*.local
 
-# studio
-studio/node_modules
-studio/.sanity
-studio/dist
-studio/.env
+# studio — deployed separately
+studio/
 
 # vercel
 .vercel
