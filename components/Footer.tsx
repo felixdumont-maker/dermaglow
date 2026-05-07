@@ -135,9 +135,19 @@ export default function Footer() {
         <p className="font-corps text-xs" style={{ color: "oklch(87% 0.032 74 / 0.28)" }}>
           © {new Date().getFullYear()} Dermaglow by Hanane. Tous droits réservés.
         </p>
-        <p className="font-corps text-xs font-semibold" style={{ color: "oklch(87% 0.032 74 / 0.80)" }}>
-          Chambly, QC
-        </p>
+        <div className="flex items-center gap-4">
+          <p className="font-corps text-xs font-semibold" style={{ color: "oklch(87% 0.032 74 / 0.80)" }}>
+            Chambly, QC
+          </p>
+          <a
+            href="https://dermaglow.sanity.studio"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-corps text-xs text-white/20 hover:text-white/50 transition-colors duration-300"
+          >
+            Admin
+          </a>
+        </div>
       </div>
 
     </footer>
