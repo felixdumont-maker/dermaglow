@@ -25,7 +25,7 @@ export default function Footer() {
         {/* Trois colonnes */}
         <div
           className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8 lg:gap-16 pb-20 md:pb-28"
-          style={{ borderTop: "1px solid oklch(53% 0.13 158 / 0.28)" }}
+          style={{ borderTop: "1px solid oklch(87% 0.032 74 / 0.18)" }}
         >
           {/* Col 1 — logo + tagline + CTA */}
           <div className="flex flex-row items-start gap-5 pt-10">
@@ -103,7 +103,7 @@ export default function Footer() {
       {/* Barre basse */}
       <div
         className="relative max-w-6xl mx-auto px-6 md:px-12 py-6 flex flex-col sm:flex-row items-center justify-between gap-3"
-        style={{ borderTop: "1px solid oklch(53% 0.13 158 / 0.18)" }}
+        style={{ borderTop: "1px solid oklch(87% 0.032 74 / 0.12)" }}
       >
         <p className="font-corps text-xs" style={{ color: "oklch(87% 0.032 74 / 0.28)" }}>
           © {new Date().getFullYear()} Dermaglow by Hanane. Tous droits réservés.
