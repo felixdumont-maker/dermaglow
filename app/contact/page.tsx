@@ -2,7 +2,7 @@ import Hero from "@/components/Hero";
 import RevealSection from "@/components/RevealSection";
 import ContactForm from "@/components/ContactForm";
 import Link from "next/link";
-import { getSiteSettings } from "@/lib/sanity";
+import { getSiteSettings, getPageContact } from "@/lib/sanity";
 
 const DEFAULT_ADRESSE = "845 Boul. de Périigny, Chambly, Québec";
 const DEFAULT_TELEPHONE = "Sur demande";
@@ -14,8 +14,10 @@ const DEFAULT_HORAIRES = [
 ];
 
 export default async function ContactPage() {
-  const settings = await getSiteSettings();
+  const [settings, pageData] = await Promise.all([getSiteSettings(), getPageContact()]);
 
+  const heroTitre = pageData?.heroTitre ?? "Nous contacter";
+  const heroSousTitre = pageData?.heroSousTitre ?? "Une question, une demande de renseignements ? Je vous réponds dans les plus brefs délais.";
   const adresse = settings?.adresse ?? DEFAULT_ADRESSE;
   const telephone = settings?.telephone ?? DEFAULT_TELEPHONE;
   const courriel = settings?.courriel ?? DEFAULT_COURRIEL;
@@ -24,8 +26,8 @@ export default async function ContactPage() {
   return (
     <>
       <Hero
-        title="Nous contacter"
-        subtitle="Une question, une demande de renseignements ? Je vous réponds dans les plus brefs délais."
+        title={heroTitre}
+        subtitle={heroSousTitre}
         tall={false}
         centered
         eyebrow="Contact · Dermaglow by Hanane"

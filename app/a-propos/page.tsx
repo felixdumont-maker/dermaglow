@@ -59,6 +59,11 @@ export default async function AProposPage() {
   const pourQui = data?.pourQui && data.pourQui.length > 0 ? data.pourQui : DEFAULT_POUR_QUI;
   const approche = data?.approchePilliers && data.approchePilliers.length > 0 ? data.approchePilliers : DEFAULT_APPROCHE;
   const pourquoiTexte = data?.pourquoiTexte ?? "Parce que chaque peau est unique. Je prends le temps de vous écouter, de comprendre vos besoins et de vous accompagner dans votre parcours beauté avec sérieux et bienveillance.";
+  const formationTitre = data?.formationTitre ?? "Certifiée et formée à la source";
+  const formationTexte1 = data?.formationTexte1 ?? "C'est à l'Académie Aya Benzekri que Hanane a acquis les bases solides et les techniques avancées qui définissent aujourd'hui son approche. Une formation rigoureuse axée sur la maîtrise des soins du visage, des peelings chimiques et des protocoles adaptés à tous les types de peau.";
+  const formationTexte2 = data?.formationTexte2 ?? "Reconnue pour l'excellence de son enseignement, l'Académie Aya Benzekri forme des esthéticiennes professionnelles avec un souci constant du détail, de l'hygiène et du résultat. Des valeurs que Hanane applique à chaque soin qu'elle réalise.";
+  const formationSpecialisations = data?.formationSpecialisations ?? ["Soins du visage avancés", "Peelings chimiques AHA/BHA", "Analyse et bilan cutané", "Soins adaptés peaux sensibles"];
+  const formationCertifications = data?.formationCertifications ?? ["Esthéticienne certifiée", "Peeling chimique professionnel", "Soins de la peau — niveau avancé"];
 
   return (
     <>
@@ -124,7 +129,7 @@ export default async function AProposPage() {
             <div className="lg:col-span-4 reveal">
               <p className="font-corps text-caption text-sauge mb-4">Formation</p>
               <h2 className="font-corps text-headline text-texte">
-                Certifiée et formée à la source
+                {formationTitre}
               </h2>
             </div>
 
@@ -156,10 +161,10 @@ export default async function AProposPage() {
                   </a>
                 </div>
                 <p className="font-corps text-body text-texte-doux mb-4">
-                  C&apos;est à l&apos;Académie Aya Benzekri que Hanane a acquis les bases solides et les techniques avancées qui définissent aujourd&apos;hui son approche. Une formation rigoureuse axée sur la maîtrise des soins du visage, des peelings chimiques et des protocoles adaptés à tous les types de peau.
+                  {formationTexte1}
                 </p>
                 <p className="font-corps text-body text-texte-doux">
-                  Reconnue pour l&apos;excellence de son enseignement, l&apos;Académie Aya Benzekri forme des esthéticiennes professionnelles avec un souci constant du détail, de l&apos;hygiène et du résultat. Des valeurs que Hanane applique à chaque soin qu&apos;elle réalise.
+                  {formationTexte2}
                 </p>
               </div>
 
@@ -167,7 +172,7 @@ export default async function AProposPage() {
                 <div>
                   <p className="font-corps text-caption text-sauge mb-3">Spécialisations</p>
                   <ul className="space-y-2">
-                    {["Soins du visage avancés", "Peelings chimiques AHA/BHA", "Analyse et bilan cutané", "Soins adaptés peaux sensibles"].map((item) => (
+                    {formationSpecialisations.map((item) => (
                       <li key={item} className="flex items-start gap-3 font-corps text-sm text-texte-doux">
                         <span className="mt-2 shrink-0 block w-4 h-px" style={{ background: "var(--sauge-clair)" }} aria-hidden="true" />
                         {item}
@@ -178,7 +183,7 @@ export default async function AProposPage() {
                 <div>
                   <p className="font-corps text-caption text-sauge mb-3">Certifications</p>
                   <ul className="space-y-2">
-                    {["Esthéticienne certifiée", "Peeling chimique professionnel", "Soins de la peau — niveau avancé"].map((item) => (
+                    {formationCertifications.map((item) => (
                       <li key={item} className="flex items-start gap-3 font-corps text-sm text-texte-doux">
                         <span className="mt-2 shrink-0 block w-4 h-px" style={{ background: "var(--sauge-clair)" }} aria-hidden="true" />
                         {item}

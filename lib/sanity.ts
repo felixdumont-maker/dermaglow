@@ -98,6 +98,32 @@ export interface PageAPropos {
   pourQui?: PourQuiItem[];
   approchePilliers?: ApprochePilier[];
   pourquoiTexte?: string;
+  formationTitre?: string;
+  formationTexte1?: string;
+  formationTexte2?: string;
+  formationSpecialisations?: string[];
+  formationCertifications?: string[];
+}
+
+export interface PageContact {
+  heroTitre?: string;
+  heroSousTitre?: string;
+}
+
+export interface PolitiqueContenu {
+  sous_titre: string;
+  texte: string;
+}
+
+export interface PolitiqueSection {
+  titre: string;
+  contenu: PolitiqueContenu[];
+}
+
+export interface PagePolitiques {
+  heroTitre?: string;
+  heroSousTitre?: string;
+  sections?: PolitiqueSection[];
 }
 
 // ─── Queries ─────────────────────────────────────────────
@@ -169,6 +195,22 @@ export async function getPageAccueil(): Promise<PageAccueil | null> {
 export async function getPageAPropos(): Promise<PageAPropos | null> {
   try {
     return await client.fetch<PageAPropos | null>(`*[_type == "pageAPropos"][0]`);
+  } catch {
+    return null;
+  }
+}
+
+export async function getPageContact(): Promise<PageContact | null> {
+  try {
+    return await client.fetch<PageContact | null>(`*[_type == "pageContact"][0]`);
+  } catch {
+    return null;
+  }
+}
+
+export async function getPagePolitiques(): Promise<PagePolitiques | null> {
+  try {
+    return await client.fetch<PagePolitiques | null>(`*[_type == "pagePolitiques"][0]`);
   } catch {
     return null;
   }
