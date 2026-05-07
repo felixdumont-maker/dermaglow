@@ -2,6 +2,14 @@
 const config = {
   plugins: {
     tailwindcss: {},
+    autoprefixer: {
+      overrideBrowserslist: [
+        "chrome >= 111",
+        "firefox >= 113",
+        "safari >= 15.4",
+        "edge >= 111",
+      ],
+    },
   },
 };
 
