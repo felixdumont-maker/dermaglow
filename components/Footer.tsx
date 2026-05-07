@@ -19,33 +19,6 @@ export default function Footer() {
   return (
     <footer className="relative overflow-hidden" style={{ background: "var(--texte)", color: "var(--beige-clair)" }}>
 
-      {/* Lueur sauge — atmosphère botanique sur fond sombre */}
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute"
-        style={{
-          top: "-80px",
-          right: "-100px",
-          width: "clamp(280px, 38vw, 520px)",
-          height: "clamp(280px, 38vw, 520px)",
-          background: "oklch(53% 0.13 158 / 0.10)",
-          filter: "blur(90px)",
-          borderRadius: "50%",
-        }}
-      />
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute"
-        style={{
-          bottom: "40px",
-          left: "-80px",
-          width: "clamp(180px, 22vw, 320px)",
-          height: "clamp(180px, 22vw, 320px)",
-          background: "oklch(73% 0.072 158 / 0.06)",
-          filter: "blur(70px)",
-          borderRadius: "50%",
-        }}
-      />
 
       <div className="relative max-w-6xl mx-auto px-6 md:px-12 pt-6 md:pt-8">
 
