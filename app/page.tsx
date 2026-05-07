@@ -79,6 +79,7 @@ export default async function HomePage() {
   const approcheTexte1 = pageData?.approcheTexte1 ?? "Chez Dermaglow by Hanane, chaque soin commence par une analyse approfondie. La beauté véritable naît d'un équilibre entre science et douceur.";
   const approcheTexte2 = pageData?.approcheTexte2 ?? "Avec des produits soigneusement sélectionnés et des techniques éprouvées, je vous accompagne vers une peau plus saine, lumineuse et en harmonie avec vous.";
   const approcheImageSrc = pageData?.approcheImage ? urlFor(pageData.approcheImage).url() : "/approche-soin.jpg";
+  const soinsImageSrc = pageData?.soinsImage ? urlFor(pageData.soinsImage).url() : "/soins-featured.jpg";
 
   return (
     <>
@@ -179,7 +180,7 @@ export default async function HomePage() {
             >
               <div className="relative overflow-hidden" style={{ aspectRatio: "3/4" }}>
                 <img
-                  src="/soins-featured.jpg"
+                  src={soinsImageSrc}
                   alt=""
                   aria-hidden="true"
                   className="absolute inset-0 w-full h-full object-cover object-center"

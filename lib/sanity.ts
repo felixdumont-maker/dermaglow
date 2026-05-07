@@ -84,6 +84,7 @@ export interface PageAccueil {
   heroTitre?: string;
   heroSousTitre?: string;
   approcheImage?: SanityImageSource;
+  soinsImage?: SanityImageSource;
   approcheTitre?: string;
   approcheTexte1?: string;
   approcheTexte2?: string;
@@ -98,6 +99,7 @@ export interface PageAPropos {
   pourQui?: PourQuiItem[];
   approchePilliers?: ApprochePilier[];
   pourquoiTexte?: string;
+  formationImage?: SanityImageSource;
   formationTitre?: string;
   formationTexte1?: string;
   formationTexte2?: string;
