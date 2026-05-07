@@ -147,6 +147,15 @@ export default function Footer() {
           >
             Admin
           </a>
+          <span className="text-white/10 text-xs">|</span>
+          <a
+            href="https://app.acuityscheduling.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-corps text-xs text-white/20 hover:text-white/50 transition-colors duration-300"
+          >
+            Calendrier
+          </a>
         </div>
       </div>
 
