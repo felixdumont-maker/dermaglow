@@ -9,9 +9,9 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        sauge:        "#2B7452",
-        "sauge-clair":"#7AAF8C",
-        "sauge-pale": "#DAEEE2",
+        sauge:        "#3D6B54",
+        "sauge-clair":"#7AAB90",
+        "sauge-pale": "#DFF0E8",
         beige:        "#E0D4B8",
         "beige-clair":"#EDE8DB",
         "gris-blanc": "#E0E9E4",
