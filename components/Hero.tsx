@@ -1,7 +1,8 @@
 "use client";
 
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
 
 interface HeroProps {
   title: string;
@@ -12,6 +13,7 @@ interface HeroProps {
   eyebrow?: string;
   centered?: boolean;
   bg?: string;
+  scrollIndicator?: string;
 }
 
 const blobs = [
@@ -79,10 +81,12 @@ function AtmosphericPanel({ reducedMotion }: { reducedMotion: boolean }) {
       />
 
       {/* Photo */}
-      <img
+      <Image
         src="/hero_section_picture.jpg"
         alt=""
-        className="absolute inset-0 w-full h-full object-cover object-center"
+        fill
+        priority
+        className="object-cover object-center"
       />
 
       {/* Subtle vignette to blend photo edges with the page */}
@@ -112,7 +116,7 @@ function AtmosphericPanel({ reducedMotion }: { reducedMotion: boolean }) {
           className="font-corps text-caption"
           style={{ color: "oklch(95% 0.010 78 / 0.6)" }}
         >
-          Chambly, Québec
+          Verdun, Québec
         </span>
       </div>
     </div>
@@ -128,6 +132,7 @@ export default function Hero({
   eyebrow = "Esthéticienne certifiée · Montréal",
   centered = false,
   bg,
+  scrollIndicator = "Faire défiler",
 }: HeroProps) {
   const [scrollY, setScrollY] = useState(0);
   const [reducedMotion, setReducedMotion] = useState(false);
@@ -362,7 +367,7 @@ export default function Hero({
                 animation: reducedMotion ? undefined : "scrollPulse 2.5s ease-in-out infinite",
               }}
             />
-            <span className="text-caption font-corps text-texte-doux">Faire défiler</span>
+            <span className="text-caption font-corps text-texte-doux">{scrollIndicator}</span>
           </div>
         </div>
       </div>

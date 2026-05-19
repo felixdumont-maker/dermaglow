@@ -7,7 +7,7 @@ export default {
       name: "adresse",
       title: "Adresse",
       type: "string",
-      initialValue: "845 Boul. de Périigny, Chambly, Québec",
+      initialValue: "670 de Gaspé, Appartement 305, Verdun, Québec H3E 1H8",
     },
     {
       name: "telephone",

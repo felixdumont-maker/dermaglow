@@ -1,13 +1,5 @@
-import Link from "next/link";
-
-const navLinks = [
-  { href: "/", label: "Accueil" },
-  { href: "/services", label: "Services" },
-  { href: "/a-propos", label: "À propos" },
-  { href: "/reservation", label: "Réservation" },
-  { href: "/contact", label: "Contact" },
-  { href: "/politiques", label: "Politiques" },
-];
+import { Link } from "@/i18n/navigation";
+import { getTranslations } from "next-intl/server";
 
 const horaires = [
   { jour: "Mardi – Vendredi", heure: "10 h – 18 h" },
@@ -15,17 +7,49 @@ const horaires = [
   { jour: "Dim. – Lun.", heure: "Fermé" },
 ];
 
-export default function Footer() {
+export default async function Footer() {
+  const [t, tnav] = await Promise.all([
+    getTranslations("footer"),
+    getTranslations("nav"),
+  ]);
+
+  const navLinks = [
+    { href: "/" as const, label: tnav("home") },
+    { href: "/services" as const, label: tnav("services") },
+    { href: "/a-propos" as const, label: tnav("about") },
+    { href: "/reservation" as const, label: tnav("reservation") },
+    { href: "/contact" as const, label: tnav("contact") },
+    { href: "/politiques" as const, label: tnav("policies") },
+  ];
+
   return (
-    <footer className="relative overflow-hidden" style={{ background: "var(--texte)", color: "var(--beige-clair)" }}>
-
-
-      <div className="relative max-w-6xl mx-auto px-6 md:px-12 pt-6 md:pt-8">
-
-        {/* Trois colonnes */}
+    <footer
+      className="relative overflow-hidden"
+      style={{
+        background: "var(--texte)",
+        color: "var(--beige-clair)",
+        borderTop: "1px solid oklch(73% 0.072 158 / 0.30)",
+      }}
+    >
+      {/* Atmospheric sauge glow */}
+      <div aria-hidden="true" className="pointer-events-none absolute inset-0 z-0">
+        <div
+          style={{
+            position: "absolute",
+            top: "-30%",
+            right: "0%",
+            width: "500px",
+            height: "500px",
+            background: "oklch(53% 0.13 158 / 0.07)",
+            filter: "blur(120px)",
+            borderRadius: "50%",
+          }}
+        />
+      </div>
+      <div className="relative z-10 max-w-6xl mx-auto px-6 md:px-12 pt-6 md:pt-8">
         <div
           className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8 lg:gap-16 pb-20 md:pb-28"
-          style={{ borderTop: "1px solid oklch(87% 0.032 74 / 0.18)" }}
+          style={{ borderTop: "1px solid oklch(73% 0.072 158 / 0.18)" }}
         >
           {/* Col 1 — logo + tagline + CTA */}
           <div className="flex flex-row items-start gap-5 pt-10">
@@ -36,25 +60,25 @@ export default function Footer() {
             />
             <div className="flex flex-col items-start text-left">
               <p className="font-corps text-sm leading-relaxed mb-6" style={{ color: "oklch(87% 0.032 74 / 0.45)" }}>
-                Esthéticienne professionnelle dédiée à révéler votre éclat naturel grâce à des soins sur mesure, à Chambly.
+                {t("tagline")}
               </p>
               <Link
                 href="/reservation"
                 className="footer-cta btn-press inline-flex items-center font-corps text-caption px-6 py-3 transition-colors duration-300 whitespace-nowrap"
                 style={{
-                  border: "1px solid oklch(87% 0.032 74 / 0.22)",
-                  color: "oklch(87% 0.032 74 / 0.55)",
+                  border: "1px solid oklch(73% 0.072 158 / 0.45)",
+                  color: "var(--sauge-clair)",
                 }}
               >
-                Prendre rendez-vous
+                {t("bookBtn")}
               </Link>
             </div>
           </div>
 
           {/* Col 2 — navigation */}
           <div className="flex flex-col items-center text-center md:items-start md:text-left pt-10">
-            <h3 className="font-corps text-caption font-semibold mb-6" style={{ color: "oklch(87% 0.032 74 / 0.80)" }}>
-              Navigation
+            <h3 className="font-corps text-caption font-semibold mb-6" style={{ color: "var(--sauge-clair)" }}>
+              {t("navigation")}
             </h3>
             <ul className="space-y-3">
               {navLinks.map(({ href, label }) => (
@@ -73,20 +97,26 @@ export default function Footer() {
 
           {/* Col 3 — contact + horaires */}
           <div className="flex flex-col items-center text-center md:items-start md:text-left pt-10">
-            <h3 className="font-corps text-caption font-semibold mb-6" style={{ color: "oklch(87% 0.032 74 / 0.80)" }}>
-              Contact
+            <h3 className="font-corps text-caption font-semibold mb-6" style={{ color: "var(--sauge-clair)" }}>
+              {t("contact")}
             </h3>
             <ul className="space-y-3 mb-8">
               <li className="font-corps text-sm" style={{ color: "oklch(87% 0.032 74 / 0.40)" }}>
-                dermaglowbyhanane@gmail.com
+                <a
+                  href="mailto:dermaglowbyhanane@gmail.com"
+                  className="hover:text-white/70 transition-colors duration-300"
+                  style={{ color: "inherit" }}
+                >
+                  dermaglowbyhanane@gmail.com
+                </a>
               </li>
               <li className="font-corps text-sm" style={{ color: "oklch(87% 0.032 74 / 0.40)" }}>
-                845 Boul. de Périigny<br />Chambly, Québec
+                670 de Gaspé, App. 305<br />Verdun, Québec H3E 1H8
               </li>
             </ul>
 
-            <h3 className="font-corps text-caption font-semibold mb-4" style={{ color: "oklch(87% 0.032 74 / 0.80)" }}>
-              Horaires
+            <h3 className="font-corps text-caption font-semibold mb-4" style={{ color: "var(--sauge-clair)" }}>
+              {t("hours")}
             </h3>
             <ul className="space-y-2 w-full">
               {horaires.map(({ jour, heure }) => (
@@ -102,15 +132,15 @@ export default function Footer() {
 
       {/* Barre basse */}
       <div
-        className="relative max-w-6xl mx-auto px-6 md:px-12 py-6 flex flex-col sm:flex-row items-center justify-between gap-3"
-        style={{ borderTop: "1px solid oklch(87% 0.032 74 / 0.12)" }}
+        className="relative z-10 max-w-6xl mx-auto px-6 md:px-12 py-6 flex flex-col sm:flex-row items-center justify-between gap-3"
+        style={{ borderTop: "1px solid oklch(73% 0.072 158 / 0.15)" }}
       >
         <p className="font-corps text-xs" style={{ color: "oklch(87% 0.032 74 / 0.28)" }}>
-          © {new Date().getFullYear()} Dermaglow by Hanane. Tous droits réservés.
+          © {new Date().getFullYear()} Dermaglow by Hanane. {t("rights")}
         </p>
         <div className="flex items-center gap-4">
-          <p className="font-corps text-xs font-semibold" style={{ color: "oklch(87% 0.032 74 / 0.80)" }}>
-            Chambly, QC
+          <p className="font-corps text-xs font-semibold" style={{ color: "var(--sauge-clair)" }}>
+            Verdun, QC
           </p>
           <a
             href="https://dermaglow.sanity.studio"
@@ -118,7 +148,7 @@ export default function Footer() {
             rel="noopener noreferrer"
             className="font-corps text-xs text-white/20 hover:text-white/50 transition-colors duration-300"
           >
-            Admin
+            {t("admin")}
           </a>
           <span className="text-white/10 text-xs">|</span>
           <a
@@ -127,11 +157,10 @@ export default function Footer() {
             rel="noopener noreferrer"
             className="font-corps text-xs text-white/20 hover:text-white/50 transition-colors duration-300"
           >
-            Calendrier
+            {t("calendar")}
           </a>
         </div>
       </div>
-
     </footer>
   );
 }

@@ -14,7 +14,7 @@ export default {
       title: "Hero — Sous-titre",
       type: "text",
       rows: 2,
-      initialValue: "Esthéticienne certifiée à Chambly, je crée des soins sur mesure qui révèlent votre éclat naturel avec douceur et précision.",
+      initialValue: "Esthéticienne certifiée à Verdun, je crée des soins sur mesure qui révèlent votre éclat naturel avec douceur et précision.",
     },
     {
       name: "bioImage",
