@@ -294,8 +294,9 @@ body {
 
 /* ─── Footer CTA hover ─── */
 .footer-cta:hover {
-  border-color: oklch(87% 0.032 74 / 0.55) !important;
-  color: oklch(87% 0.032 74 / 0.90) !important;
+  background: var(--sauge) !important;
+  border-color: var(--sauge) !important;
+  color: var(--beige-clair) !important;
 }
 .footer-nav-link:hover {
   color: var(--sauge-clair) !important;

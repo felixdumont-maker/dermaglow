@@ -1,20 +1,23 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { Link, usePathname, useRouter } from "@/i18n/navigation";
+import { useTranslations, useLocale } from "next-intl";
 
 const links = [
-  { href: "/", label: "Accueil" },
-  { href: "/services", label: "Services" },
-  { href: "/a-propos", label: "À propos" },
-  { href: "/contact", label: "Contact" },
+  { href: "/" as const, labelKey: "home" as const },
+  { href: "/services" as const, labelKey: "services" as const },
+  { href: "/a-propos" as const, labelKey: "about" as const },
+  { href: "/contact" as const, labelKey: "contact" as const },
 ];
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
+  const router = useRouter();
+  const t = useTranslations("nav");
+  const locale = useLocale();
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 30);
@@ -23,6 +26,10 @@ export default function Navbar() {
   }, []);
 
   useEffect(() => setOpen(false), [pathname]);
+
+  function switchLocale(next: "fr" | "en") {
+    router.replace(pathname, { locale: next });
+  }
 
   return (
     <header
@@ -34,10 +41,9 @@ export default function Navbar() {
         boxShadow: scrolled ? "0 1px 0 oklch(73% 0.072 158 / 0.20)" : "none",
       }}
     >
-      {/* Nav row — mirrors the hero 55/45 split on lg */}
       <div className="h-16 md:h-20 flex items-center">
 
-        {/* Logo — left 55% panel */}
+        {/* Logo */}
         <div className="flex-shrink-0 flex items-center px-6 md:px-10 lg:px-14 xl:px-20 lg:w-[55%]">
           <Link
             href="/"
@@ -49,9 +55,9 @@ export default function Navbar() {
           </Link>
         </div>
 
-        {/* Desktop links — right 45% panel */}
+        {/* Desktop links */}
         <ul className="hidden lg:flex items-center gap-6 xl:gap-9 flex-1 px-8 xl:px-10 justify-end">
-          {links.map(({ href, label }) => (
+          {links.map(({ href, labelKey }) => (
             <li key={href} className="flex-shrink-0">
               <Link
                 href={href}
@@ -61,7 +67,7 @@ export default function Navbar() {
                     : "text-texte-doux hover:text-texte"
                 }`}
               >
-                {label}
+                {t(labelKey)}
                 {pathname === href && (
                   <span
                     className="absolute -bottom-1 left-0 right-0 h-px bg-sauge"
@@ -79,8 +85,28 @@ export default function Navbar() {
               href="/reservation"
               className="btn-press font-corps text-caption bg-texte text-beige-clair px-5 py-2.5 hover:bg-sauge transition-colors duration-300 whitespace-nowrap"
             >
-              Réserver
+              {t("book")}
             </Link>
+          </li>
+          {/* Language switcher */}
+          <li className="flex-shrink-0 flex items-center gap-1.5 ml-1">
+            <button
+              onClick={() => switchLocale("fr")}
+              className={`font-corps text-caption transition-colors duration-300 ${
+                locale === "fr" ? "text-sauge" : "text-texte-doux/50 hover:text-texte-doux"
+              }`}
+            >
+              FR
+            </button>
+            <span className="text-texte-doux/30 text-xs">|</span>
+            <button
+              onClick={() => switchLocale("en")}
+              className={`font-corps text-caption transition-colors duration-300 ${
+                locale === "en" ? "text-sauge" : "text-texte-doux/50 hover:text-texte-doux"
+              }`}
+            >
+              EN
+            </button>
           </li>
         </ul>
 
@@ -88,7 +114,7 @@ export default function Navbar() {
         <button
           className="lg:hidden flex flex-col justify-center gap-[5px] w-8 h-8 btn-press ml-auto mr-6 md:mr-10"
           onClick={() => setOpen(!open)}
-          aria-label={open ? "Fermer le menu" : "Ouvrir le menu"}
+          aria-label={open ? t("closeMenu") : t("openMenu")}
           aria-expanded={open}
         >
           <span
@@ -139,7 +165,7 @@ export default function Navbar() {
           }}
         >
           <ul className="flex flex-col px-6 md:px-10 py-3 gap-0">
-            {links.map(({ href, label }) => (
+            {links.map(({ href, labelKey }) => (
               <li key={href}>
                 <Link
                   href={href}
@@ -147,7 +173,7 @@ export default function Navbar() {
                     pathname === href ? "text-sauge" : "text-texte-doux"
                   }`}
                 >
-                  {label}
+                  {t(labelKey)}
                 </Link>
               </li>
             ))}
@@ -156,8 +182,28 @@ export default function Navbar() {
                 href="/reservation"
                 className="btn-press inline-flex items-center font-corps text-caption bg-texte text-beige-clair px-6 min-h-[44px] hover:bg-sauge transition-colors duration-300"
               >
-                Réserver
+                {t("book")}
               </Link>
+            </li>
+            {/* Mobile language switcher */}
+            <li className="flex items-center gap-2 pt-3 pb-1">
+              <button
+                onClick={() => switchLocale("fr")}
+                className={`font-corps text-caption min-h-[44px] transition-colors duration-300 ${
+                  locale === "fr" ? "text-sauge" : "text-texte-doux/50"
+                }`}
+              >
+                FR
+              </button>
+              <span className="text-texte-doux/30 text-xs">|</span>
+              <button
+                onClick={() => switchLocale("en")}
+                className={`font-corps text-caption min-h-[44px] transition-colors duration-300 ${
+                  locale === "en" ? "text-sauge" : "text-texte-doux/50"
+                }`}
+              >
+                EN
+              </button>
             </li>
           </ul>
         </div>

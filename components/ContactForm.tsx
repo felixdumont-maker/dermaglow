@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
+import { useTranslations } from "next-intl";
 
 interface FormData {
   nom: string;
@@ -19,6 +20,7 @@ const inputStyle = {
 } as React.CSSProperties;
 
 export default function ContactForm() {
+  const t = useTranslations("form");
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
   const [reducedMotion, setReducedMotion] = useState(false);
@@ -46,7 +48,7 @@ export default function ContactForm() {
       setSubmitted(true);
       reset();
     } catch {
-      alert("Une erreur est survenue. Veuillez réessayer ou nous écrire directement.");
+      alert(t("errorAlert"));
     } finally {
       setLoading(false);
     }
@@ -60,16 +62,16 @@ export default function ContactForm() {
       >
         <span className="line-ornament mb-6 block" />
         <h3 className="font-corps text-title text-texte mb-2">
-          Merci pour votre message
+          {t("successTitle")}
         </h3>
         <p className="font-corps text-body text-texte-doux mb-8">
-          Je vous répondrai dans les plus brefs délais.
+          {t("successText")}
         </p>
         <button
           onClick={() => setSubmitted(false)}
           className="btn-press font-corps text-caption border border-sauge text-sauge px-6 py-3 hover:bg-sauge hover:text-white transition-colors duration-300"
         >
-          Envoyer un autre message
+          {t("successAgain")}
         </button>
       </div>
     );
@@ -79,11 +81,11 @@ export default function ContactForm() {
     <form onSubmit={handleSubmit(onSubmit)} className="space-y-5" noValidate>
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
         <div>
-          <label htmlFor="contact-nom" className="sr-only">Nom complet</label>
+          <label htmlFor="contact-nom" className="sr-only">{t("nameLabel")}</label>
           <input
             id="contact-nom"
-            {...register("nom", { required: "Votre nom est requis" })}
-            placeholder="Nom complet *"
+            {...register("nom", { required: t("nameError") })}
+            placeholder={t("namePlaceholder")}
             autoComplete="name"
             className={inputClass}
             style={inputStyle}
@@ -97,15 +99,15 @@ export default function ContactForm() {
           )}
         </div>
         <div>
-          <label htmlFor="contact-email" className="sr-only">Adresse courriel</label>
+          <label htmlFor="contact-email" className="sr-only">{t("emailLabel")}</label>
           <input
             id="contact-email"
             {...register("email", {
-              required: "Votre email est requis",
-              pattern: { value: /^\S+@\S+\.\S+$/, message: "Email invalide" },
+              required: t("emailError"),
+              pattern: { value: /^\S+@\S+\.\S+$/, message: t("emailInvalid") },
             })}
             type="email"
-            placeholder="Adresse courriel *"
+            placeholder={t("emailPlaceholder")}
             autoComplete="email"
             className={inputClass}
             style={inputStyle}
@@ -121,12 +123,12 @@ export default function ContactForm() {
       </div>
 
       <div>
-        <label htmlFor="contact-telephone" className="sr-only">Téléphone</label>
+        <label htmlFor="contact-telephone" className="sr-only">{t("phoneLabel")}</label>
         <input
           id="contact-telephone"
           {...register("telephone")}
           type="tel"
-          placeholder="Téléphone (optionnel)"
+          placeholder={t("phonePlaceholder")}
           autoComplete="tel"
           className={inputClass}
           style={inputStyle}
@@ -134,11 +136,11 @@ export default function ContactForm() {
       </div>
 
       <div>
-        <label htmlFor="contact-message" className="sr-only">Message</label>
+        <label htmlFor="contact-message" className="sr-only">{t("messageLabel")}</label>
         <textarea
           id="contact-message"
-          {...register("message", { required: "Votre message est requis" })}
-          placeholder="Votre message *"
+          {...register("message", { required: t("messageError") })}
+          placeholder={t("messagePlaceholder")}
           rows={5}
           className={`${inputClass} resize-none`}
           style={inputStyle}
@@ -169,7 +171,7 @@ export default function ContactForm() {
             <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 0 1 8-8V0C5.373 0 0 5.373 0 12h4z" />
           </svg>
         )}
-        {loading ? "Envoi en cours…" : "Envoyer le message"}
+        {loading ? t("sendingBtn") : t("submitBtn")}
       </button>
     </form>
   );
