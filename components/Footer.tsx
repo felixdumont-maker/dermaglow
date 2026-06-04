@@ -137,6 +137,16 @@ export default async function Footer() {
       >
         <p className="font-corps text-xs" style={{ color: "oklch(87% 0.032 74 / 0.28)" }}>
           © {new Date().getFullYear()} Dermaglow by Hanane. {t("rights")}
+          {" · "}
+          <a
+            href="https://cocktailmedia.ca"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-white/50 transition-colors duration-300"
+            style={{ color: "inherit" }}
+          >
+            Création cocktailmedia.ca
+          </a>
         </p>
         <div className="flex items-center gap-4">
           <p className="font-corps text-xs font-semibold" style={{ color: "var(--sauge-clair)" }}>
