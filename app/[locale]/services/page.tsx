@@ -64,7 +64,7 @@ const SERVICES_FR = [
   {
     numero: "03",
     titre: "Peeling Professionnel Éclat & Renouvellement Cellulaire",
-    image: null,
+    image: "/peeling-professionnel.jpg",
     duree: "30 minutes",
     prix: "130$ + taxes",
     description: "Un soin exfoliant professionnel conçu pour stimuler le renouvellement cellulaire et révéler un teint plus lumineux, lisse et uniforme.",
@@ -153,7 +153,7 @@ const SERVICES_EN = [
   {
     numero: "03",
     titre: "Professional Peeling — Radiance & Cell Renewal",
-    image: null,
+    image: "/peeling-professionnel.jpg",
     duree: "30 minutes",
     prix: "$130 + taxes",
     description: "A professional exfoliating treatment designed to stimulate cell renewal and reveal a more luminous, smooth and even complexion.",
