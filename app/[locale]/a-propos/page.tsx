@@ -210,38 +210,13 @@ export default async function AProposPage() {
                 className="pb-10 mb-10"
                 style={{ borderBottom: "1px solid oklch(73% 0.072 158 / 0.22)" }}
               >
-                {/* Photo placeholder */}
-                <div
-                  className="relative overflow-hidden mb-8 flex flex-col items-center justify-center"
-                  style={{
-                    aspectRatio: "16/7",
-                    background: "linear-gradient(145deg, oklch(73% 0.072 158 / 0.15) 0%, oklch(87% 0.032 74 / 0.50) 55%, oklch(91% 0.014 158 / 0.28) 100%)",
-                    border: "1px solid oklch(73% 0.072 158 / 0.18)",
-                  }}
-                >
-                  <span
-                    className="font-corps select-none"
-                    style={{
-                      fontSize: "clamp(4rem, 12vw, 8rem)",
-                      fontWeight: 100,
-                      color: "oklch(73% 0.072 158 / 0.15)",
-                      lineHeight: 1,
-                    }}
-                    aria-hidden="true"
-                  >
-                    ✦
-                  </span>
-                  <span
-                    className="font-corps absolute bottom-5 left-0 right-0 text-center tracking-widest uppercase"
-                    style={{
-                      fontSize: "0.65rem",
-                      fontWeight: 300,
-                      color: "oklch(53% 0.13 158 / 0.45)",
-                      letterSpacing: "0.18em",
-                    }}
-                  >
-                    Photo à venir
-                  </span>
+                <div className="relative overflow-hidden mb-8" style={{ aspectRatio: "16/7" }}>
+                  <Image
+                    src="/espace-verdun.jpg"
+                    alt="Mon espace à Verdun"
+                    fill
+                    className="object-cover object-center"
+                  />
                 </div>
 
                 <p className="font-corps text-body text-texte-doux mb-4">
