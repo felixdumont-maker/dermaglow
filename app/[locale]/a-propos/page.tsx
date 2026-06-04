@@ -118,7 +118,7 @@ export default async function AProposPage() {
 
   const heroTitre = data?.heroTitre ?? "Derrière Dermaglow";
   const heroSousTitre = data?.heroSousTitre ?? "Esthéticienne certifiée à Verdun, je crée des soins sur mesure qui révèlent votre éclat naturel avec douceur et précision.";
-  const bioImageSrc = data?.bioImage ? urlFor(data.bioImage).url() : null;
+  const bioImageSrc = data?.bioImage ? urlFor(data.bioImage).url() : "/portrait-hanane.jpg";
   const bioTexte1 = data?.bioTexte1 ?? "Un endroit chaleureux, apaisant et professionnel, pensé pour vous offrir un vrai moment de détente tout en prenant soin de votre peau. Chaque soin est réalisé dans le respect des normes d'hygiène, avec douceur et précision.";
   const bioTexte2 = data?.bioTexte2 ?? "Passionnée par les soins de la peau, j'ai choisi de me certifier en soins du visage et peeling pour vous offrir des traitements efficaces, sécuritaires et adaptés à vos besoins. Mon objectif : révéler l'éclat naturel de votre peau et vous aider à vous sentir belle et confiante.";
   const pourQui = data?.pourQui && data.pourQui.length > 0
@@ -150,46 +150,12 @@ export default async function AProposPage() {
         <RevealSection>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center stagger">
             <div className="relative aspect-[4/5] max-h-72 md:max-h-none overflow-hidden">
-              {bioImageSrc ? (
-                <Image
-                  src={bioImageSrc}
-                  alt=""
-                  fill
-                  className="object-cover object-center"
-                />
-              ) : (
-                <div
-                  className="w-full h-full flex flex-col items-center justify-center"
-                  style={{
-                    background: "linear-gradient(160deg, oklch(73% 0.072 158 / 0.18) 0%, oklch(87% 0.032 74 / 0.55) 60%, oklch(91% 0.014 158 / 0.30) 100%)",
-                    border: "1px solid oklch(73% 0.072 158 / 0.18)",
-                  }}
-                >
-                  <span
-                    className="font-corps select-none"
-                    style={{
-                      fontSize: "clamp(4rem, 12vw, 8rem)",
-                      fontWeight: 100,
-                      color: "oklch(73% 0.072 158 / 0.18)",
-                      lineHeight: 1,
-                    }}
-                    aria-hidden="true"
-                  >
-                    ✦
-                  </span>
-                  <span
-                    className="font-corps mt-4 tracking-widest uppercase text-center"
-                    style={{
-                      fontSize: "0.65rem",
-                      fontWeight: 300,
-                      color: "oklch(53% 0.13 158 / 0.50)",
-                      letterSpacing: "0.18em",
-                    }}
-                  >
-                    Photo à venir
-                  </span>
-                </div>
-              )}
+              <Image
+                src={bioImageSrc}
+                alt="Hanane Ali-Eddine, esthéticienne"
+                fill
+                className="object-cover object-center"
+              />
               <div className="absolute bottom-6 left-6 z-10">
                 <span
                   className="font-corps text-caption"
