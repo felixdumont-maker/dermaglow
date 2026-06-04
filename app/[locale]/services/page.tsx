@@ -1,5 +1,6 @@
 // TODO: domaine cible = dermaglowbyhanane.ca
 import type { Metadata } from "next";
+import Image from "next/image";
 import Hero from "@/components/Hero";
 import RevealSection from "@/components/RevealSection";
 import { Link } from "@/i18n/navigation";
@@ -23,6 +24,7 @@ const SERVICES_FR = [
   {
     numero: "01",
     titre: "Facial Essentiel",
+    image: "/facial-essentiel.webp",
     duree: "45 minutes",
     prix: "65$ + taxes",
     description: "Un soin rapide et efficace conçu pour nettoyer, rafraîchir et redonner de l'éclat à la peau. Idéal pour entretenir une peau saine au quotidien tout en profitant d'un moment de détente.",
@@ -42,6 +44,7 @@ const SERVICES_FR = [
   {
     numero: "02",
     titre: "Facial Signature + Massage",
+    image: null,
     duree: "90 minutes",
     prix: "130$ + taxes",
     description: "Un soin complet et intensif conçu pour purifier la peau en profondeur et restaurer son équilibre naturel.",
@@ -61,6 +64,7 @@ const SERVICES_FR = [
   {
     numero: "03",
     titre: "Peeling Professionnel Éclat & Renouvellement Cellulaire",
+    image: null,
     duree: "30 minutes",
     prix: "130$ + taxes",
     description: "Un soin exfoliant professionnel conçu pour stimuler le renouvellement cellulaire et révéler un teint plus lumineux, lisse et uniforme.",
@@ -83,6 +87,7 @@ const SERVICES_FR = [
   {
     numero: "04",
     titre: "Microneedling (Soin de stimulation cutanée)",
+    image: null,
     duree: "60 minutes",
     prix: "150$",
     description: "Un soin esthétique avancé qui stimule la peau à l'aide de micro-aiguilles pour favoriser le renouvellement cellulaire et la production de collagène.",
@@ -108,6 +113,7 @@ const SERVICES_EN = [
   {
     numero: "01",
     titre: "Essential Facial",
+    image: "/facial-essentiel.webp",
     duree: "45 minutes",
     prix: "$65 + taxes",
     description: "A quick and effective treatment designed to cleanse, refresh and restore radiance to the skin. Ideal for maintaining healthy skin daily while enjoying a moment of relaxation.",
@@ -127,6 +133,7 @@ const SERVICES_EN = [
   {
     numero: "02",
     titre: "Signature Facial + Massage",
+    image: null,
     duree: "90 minutes",
     prix: "$130 + taxes",
     description: "A complete and intensive treatment designed to deeply purify the skin and restore its natural balance.",
@@ -146,6 +153,7 @@ const SERVICES_EN = [
   {
     numero: "03",
     titre: "Professional Peeling — Radiance & Cell Renewal",
+    image: null,
     duree: "30 minutes",
     prix: "$130 + taxes",
     description: "A professional exfoliating treatment designed to stimulate cell renewal and reveal a more luminous, smooth and even complexion.",
@@ -168,6 +176,7 @@ const SERVICES_EN = [
   {
     numero: "04",
     titre: "Microneedling (Skin Stimulation Treatment)",
+    image: null,
     duree: "60 minutes",
     prix: "$150",
     description: "An advanced esthetic treatment that stimulates the skin with micro-needles to promote cell renewal and collagen production.",
@@ -211,38 +220,39 @@ export default async function ServicesPage({ params }: { params: { locale: strin
           <RevealSection className="max-w-6xl mx-auto px-6 md:px-12 py-20 md:py-28">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16">
 
-              {/* Left column — number + placeholder */}
+              {/* Left column — image or placeholder */}
               <div className="lg:col-span-4 reveal">
-                {/* Photo placeholder — sauge/beige gradient */}
-                <div
-                  className="relative aspect-[4/5] overflow-hidden mb-5 flex flex-col items-center justify-center"
-                  style={{
-                    background: "linear-gradient(160deg, oklch(73% 0.072 158 / 0.18) 0%, oklch(87% 0.032 74 / 0.55) 60%, oklch(91% 0.014 158 / 0.30) 100%)",
-                    border: "1px solid oklch(73% 0.072 158 / 0.18)",
-                  }}
-                >
-                  <span
-                    className="font-corps leading-none select-none text-center"
-                    style={{
-                      fontSize: "clamp(5rem, 14vw, 9rem)",
-                      fontWeight: 100,
-                      color: "oklch(73% 0.072 158 / 0.18)",
-                    }}
-                    aria-hidden="true"
-                  >
-                    {service.numero}
-                  </span>
-                  <span
-                    className="font-corps absolute bottom-6 left-0 right-0 text-center tracking-widest uppercase"
-                    style={{
-                      fontSize: "0.65rem",
-                      fontWeight: 300,
-                      color: "oklch(53% 0.13 158 / 0.50)",
-                      letterSpacing: "0.18em",
-                    }}
-                  >
-                    Photo à venir
-                  </span>
+                <div className="relative aspect-[4/5] overflow-hidden mb-5">
+                  {service.image ? (
+                    <Image
+                      src={service.image}
+                      alt={service.titre}
+                      fill
+                      className="object-cover object-center"
+                    />
+                  ) : (
+                    <div
+                      className="w-full h-full flex flex-col items-center justify-center"
+                      style={{
+                        background: "linear-gradient(160deg, oklch(73% 0.072 158 / 0.18) 0%, oklch(87% 0.032 74 / 0.55) 60%, oklch(91% 0.014 158 / 0.30) 100%)",
+                        border: "1px solid oklch(73% 0.072 158 / 0.18)",
+                      }}
+                    >
+                      <span
+                        className="font-corps leading-none select-none text-center"
+                        style={{ fontSize: "clamp(5rem, 14vw, 9rem)", fontWeight: 100, color: "oklch(73% 0.072 158 / 0.18)" }}
+                        aria-hidden="true"
+                      >
+                        {service.numero}
+                      </span>
+                      <span
+                        className="font-corps absolute bottom-6 left-0 right-0 text-center tracking-widest uppercase"
+                        style={{ fontSize: "0.65rem", fontWeight: 300, color: "oklch(53% 0.13 158 / 0.50)", letterSpacing: "0.18em" }}
+                      >
+                        Photo à venir
+                      </span>
+                    </div>
+                  )}
                 </div>
                 <p className="font-corps text-caption text-sauge">{service.duree}</p>
               </div>
