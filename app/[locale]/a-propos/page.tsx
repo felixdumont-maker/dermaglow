@@ -128,7 +128,7 @@ export default async function AProposPage() {
     ? data.approchePilliers
     : (locale === "en" ? DEFAULT_APPROCHE_EN : DEFAULT_APPROCHE);
   const pourquoiTexte = data?.pourquoiTexte ?? "Parce que chaque peau est unique. Je prends le temps de vous écouter, de comprendre vos besoins et de vous accompagner dans votre parcours beauté avec sérieux et bienveillance.";
-  const formationImageSrc = data?.formationImage ? urlFor(data.formationImage).url() : "/aya-benzekri.png";
+  const formationImageSrc = data?.formationImage ? urlFor(data.formationImage).url() : "/formation-hanane.jpg";
   const formationTitre = data?.formationTitre ?? "Certifiée et formée à la source";
   const formationTexte1 = data?.formationTexte1 ?? "C'est à l'Académie Aya Benzekri que Hanane a acquis les bases solides et les techniques avancées qui définissent aujourd'hui son approche. Une formation rigoureuse axée sur la maîtrise des soins du visage, des peelings chimiques et des protocoles adaptés à tous les types de peau.";
   const formationTexte2 = data?.formationTexte2 ?? "Reconnue pour l'excellence de son enseignement, l'Académie Aya Benzekri forme des esthéticiennes professionnelles avec un souci constant du détail, de l'hygiène et du résultat. Des valeurs que Hanane applique à chaque soin qu'elle réalise.";
