@@ -87,7 +87,7 @@ const SERVICES_FR = [
   {
     numero: "04",
     titre: "Microneedling (Soin de stimulation cutanée)",
-    image: null,
+    image: "/microneedling.webp",
     duree: "60 minutes",
     prix: "150$",
     description: "Un soin esthétique avancé qui stimule la peau à l'aide de micro-aiguilles pour favoriser le renouvellement cellulaire et la production de collagène.",
@@ -176,7 +176,7 @@ const SERVICES_EN = [
   {
     numero: "04",
     titre: "Microneedling (Skin Stimulation Treatment)",
-    image: null,
+    image: "/microneedling.webp",
     duree: "60 minutes",
     prix: "$150",
     description: "An advanced esthetic treatment that stimulates the skin with micro-needles to promote cell renewal and collagen production.",
