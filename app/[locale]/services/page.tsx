@@ -44,7 +44,7 @@ const SERVICES_FR = [
   {
     numero: "02",
     titre: "Facial Signature + Massage",
-    image: null,
+    image: "/facial-signature.jpg",
     duree: "90 minutes",
     prix: "130$ + taxes",
     description: "Un soin complet et intensif conçu pour purifier la peau en profondeur et restaurer son équilibre naturel.",
@@ -133,7 +133,7 @@ const SERVICES_EN = [
   {
     numero: "02",
     titre: "Signature Facial + Massage",
-    image: null,
+    image: "/facial-signature.jpg",
     duree: "90 minutes",
     prix: "$130 + taxes",
     description: "A complete and intensive treatment designed to deeply purify the skin and restore its natural balance.",
