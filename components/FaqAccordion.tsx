@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 
-const DEFAULT_FAQS = [
+const DEFAULT_FAQS_FR = [
   {
     question: "Comment prendre rendez-vous ?",
     answer:
@@ -16,7 +16,7 @@ const DEFAULT_FAQS = [
   {
     question: "Combien de temps dure un soin ?",
     answer:
-      "La durée varie selon la formule choisie : de 30 minutes pour un peeling Éclat, jusqu'à 90 minutes pour le soin Prestige. Chaque formule est détaillée sur la page Services avec sa durée et son tarif.",
+      "La durée varie selon la formule choisie : de 30 minutes pour le Peeling Professionnel jusqu'à 90 minutes pour le Facial Signature + Massage. Chaque soin est détaillé sur la page Services avec sa durée et son tarif.",
   },
   {
     question: "Le peeling convient-il à tous les types de peau ?",
@@ -35,16 +35,51 @@ const DEFAULT_FAQS = [
   },
 ];
 
+const DEFAULT_FAQS_EN = [
+  {
+    question: "How do I book an appointment?",
+    answer:
+      "You can book directly online via our booking form, available 24/7. You can also email us at dermaglowbyhanane@gmail.com and we will get back to you as soon as possible.",
+  },
+  {
+    question: "Is the consultation included in the first treatment?",
+    answer:
+      "Yes, every new client receives a personalized skin analysis included in their first treatment. This step allows us to tailor the protocol to your specific needs and achieve the best results.",
+  },
+  {
+    question: "How long does a treatment take?",
+    answer:
+      "Duration varies by treatment: from 30 minutes for the Professional Peeling to 90 minutes for the Signature Facial + Massage. Each treatment is detailed on the Services page with its duration and price.",
+  },
+  {
+    question: "Is peeling suitable for all skin types?",
+    answer:
+      "A prior consultation is mandatory before any peeling treatment. It allows us to choose the formula and concentration best suited to your skin — whether sensitive, combination or mature — for optimal results in complete safety.",
+  },
+  {
+    question: "How should I prepare before a treatment?",
+    answer:
+      "Arrive without makeup if possible. Avoid intense sun exposure and the use of acids or retinoids in the 48 hours before your appointment. Specific recommendations will be sent to you upon confirmation.",
+  },
+  {
+    question: "Do you offer treatments for men?",
+    answer:
+      "Absolutely. All treatments are open to everyone, regardless of gender. Protocols are always adapted to your skin type during the initial consultation.",
+  },
+];
+
 interface FaqAccordionProps {
   faqs?: { question: string; answer: string }[];
+  locale?: string;
 }
 
-export default function FaqAccordion({ faqs = DEFAULT_FAQS }: FaqAccordionProps) {
+export default function FaqAccordion({ faqs, locale = "fr" }: FaqAccordionProps) {
+  const items = faqs ?? (locale === "en" ? DEFAULT_FAQS_EN : DEFAULT_FAQS_FR);
   const [open, setOpen] = useState<number | null>(null);
 
   return (
     <div>
-      {faqs.map(({ question, answer }, i) => (
+      {items.map(({ question, answer }, i) => (
         <div
           key={i}
           className="border-b"

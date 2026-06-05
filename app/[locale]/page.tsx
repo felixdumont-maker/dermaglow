@@ -434,7 +434,7 @@ export default async function HomePage() {
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
               />
-              <FaqAccordion faqs={faqItems} />
+              <FaqAccordion faqs={faqItems} locale={locale} />
             </div>
           </div>
         </RevealSection>
