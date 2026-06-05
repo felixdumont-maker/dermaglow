@@ -4,7 +4,7 @@ import RevealSection from "@/components/RevealSection";
 import ContactForm from "@/components/ContactForm";
 import { Link } from "@/i18n/navigation";
 import { getSiteSettings, getPageContact } from "@/lib/sanity";
-import { getTranslations } from "next-intl/server";
+import { getTranslations, getLocale } from "next-intl/server";
 import { buildMetadata } from "@/lib/seo";
 
 export async function generateMetadata({ params }: { params: { locale: string } }): Promise<Metadata> {
@@ -21,23 +21,31 @@ export async function generateMetadata({ params }: { params: { locale: string } 
 }
 
 const DEFAULT_ADRESSE = "670 de Gaspé, Appartement 305, Verdun, Québec H3E 1H8";
-const DEFAULT_TELEPHONE = "Sur demande";
 const DEFAULT_COURRIEL = "dermaglowbyhanane@gmail.com";
-const DEFAULT_HORAIRES = [
-  { jour: "Mardi – Vendredi", heure: "10 h – 18 h" },
-  { jour: "Samedi", heure: "9 h – 16 h" },
-  { jour: "Dimanche – Lundi", heure: "Fermé" },
-];
 
 export default async function ContactPage() {
-  const [t, settings, pageData] = await Promise.all([
+  const [t, locale, settings, pageData] = await Promise.all([
     getTranslations("contact"),
+    getLocale(),
     getSiteSettings(),
     getPageContact(),
   ]);
 
-  const heroTitre = pageData?.heroTitre ?? "Nous contacter";
-  const heroSousTitre = pageData?.heroSousTitre ?? "Une question, une demande de renseignements ? Je vous réponds dans les plus brefs délais.";
+  const DEFAULT_TELEPHONE = locale === "en" ? "On request" : "Sur demande";
+  const DEFAULT_HORAIRES = locale === "en"
+    ? [
+        { jour: "Tuesday – Friday", heure: "10 am – 6 pm" },
+        { jour: "Saturday", heure: "9 am – 4 pm" },
+        { jour: "Sunday – Monday", heure: "Closed" },
+      ]
+    : [
+        { jour: "Mardi – Vendredi", heure: "10 h – 18 h" },
+        { jour: "Samedi", heure: "9 h – 16 h" },
+        { jour: "Dimanche – Lundi", heure: "Fermé" },
+      ];
+
+  const heroTitre = pageData?.heroTitre ?? (locale === "en" ? "Contact us" : "Nous contacter");
+  const heroSousTitre = pageData?.heroSousTitre ?? (locale === "en" ? "A question or enquiry? I'll get back to you as soon as possible." : "Une question, une demande de renseignements ? Je vous réponds dans les plus brefs délais.");
   const adresse = settings?.adresse ?? DEFAULT_ADRESSE;
   const telephone = settings?.telephone ?? DEFAULT_TELEPHONE;
   const courriel = settings?.courriel ?? DEFAULT_COURRIEL;

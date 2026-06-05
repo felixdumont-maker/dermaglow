@@ -116,24 +116,24 @@ export default async function AProposPage() {
     getPageAPropos(),
   ]);
 
-  const heroTitre = data?.heroTitre ?? "Derrière Dermaglow";
-  const heroSousTitre = data?.heroSousTitre ?? "Esthéticienne certifiée à Verdun, je crée des soins sur mesure qui révèlent votre éclat naturel avec douceur et précision.";
+  const heroTitre = data?.heroTitre ?? (locale === "en" ? "Behind Dermaglow" : "Derrière Dermaglow");
+  const heroSousTitre = data?.heroSousTitre ?? (locale === "en" ? "Certified esthetician in Verdun, I create bespoke treatments that reveal your natural glow with gentleness and precision." : "Esthéticienne certifiée à Verdun, je crée des soins sur mesure qui révèlent votre éclat naturel avec douceur et précision.");
   const bioImageSrc = data?.bioImage ? urlFor(data.bioImage).url() : "/portrait-hanane.jpg";
-  const bioTexte1 = data?.bioTexte1 ?? "Un endroit chaleureux, apaisant et professionnel, pensé pour vous offrir un vrai moment de détente tout en prenant soin de votre peau. Chaque soin est réalisé dans le respect des normes d'hygiène, avec douceur et précision.";
-  const bioTexte2 = data?.bioTexte2 ?? "Passionnée par les soins de la peau, j'ai choisi de me certifier en soins du visage et peeling pour vous offrir des traitements efficaces, sécuritaires et adaptés à vos besoins. Mon objectif : révéler l'éclat naturel de votre peau et vous aider à vous sentir belle et confiante.";
+  const bioTexte1 = data?.bioTexte1 ?? (locale === "en" ? "A warm, soothing and professional space designed to offer you a true moment of relaxation while caring for your skin. Every treatment is performed in compliance with hygiene standards, with gentleness and precision." : "Un endroit chaleureux, apaisant et professionnel, pensé pour vous offrir un vrai moment de détente tout en prenant soin de votre peau. Chaque soin est réalisé dans le respect des normes d'hygiène, avec douceur et précision.");
+  const bioTexte2 = data?.bioTexte2 ?? (locale === "en" ? "Passionate about skincare, I chose to become certified in facial treatments and chemical peeling to offer you effective, safe treatments tailored to your needs. My goal: to reveal your skin's natural radiance and help you feel beautiful and confident." : "Passionnée par les soins de la peau, j'ai choisi de me certifier en soins du visage et peeling pour vous offrir des traitements efficaces, sécuritaires et adaptés à vos besoins. Mon objectif : révéler l'éclat naturel de votre peau et vous aider à vous sentir belle et confiante.");
   const pourQui = data?.pourQui && data.pourQui.length > 0
     ? data.pourQui
     : (locale === "en" ? DEFAULT_POUR_QUI_EN : DEFAULT_POUR_QUI);
   const approche = data?.approchePilliers && data.approchePilliers.length > 0
     ? data.approchePilliers
     : (locale === "en" ? DEFAULT_APPROCHE_EN : DEFAULT_APPROCHE);
-  const pourquoiTexte = data?.pourquoiTexte ?? "Parce que chaque peau est unique. Je prends le temps de vous écouter, de comprendre vos besoins et de vous accompagner dans votre parcours beauté avec sérieux et bienveillance.";
+  const pourquoiTexte = data?.pourquoiTexte ?? (locale === "en" ? "Because every skin is unique. I take the time to listen, understand your needs and guide you through your beauty journey with care and dedication." : "Parce que chaque peau est unique. Je prends le temps de vous écouter, de comprendre vos besoins et de vous accompagner dans votre parcours beauté avec sérieux et bienveillance.");
   const formationImageSrc = data?.formationImage ? urlFor(data.formationImage).url() : "/formation-hanane.jpg";
-  const formationTitre = data?.formationTitre ?? "Certifiée et formée à la source";
-  const formationTexte1 = data?.formationTexte1 ?? "C'est à l'Académie Aya Benzekri que Hanane a acquis les bases solides et les techniques avancées qui définissent aujourd'hui son approche. Une formation rigoureuse axée sur la maîtrise des soins du visage, des peelings chimiques et des protocoles adaptés à tous les types de peau.";
-  const formationTexte2 = data?.formationTexte2 ?? "Reconnue pour l'excellence de son enseignement, l'Académie Aya Benzekri forme des esthéticiennes professionnelles avec un souci constant du détail, de l'hygiène et du résultat. Des valeurs que Hanane applique à chaque soin qu'elle réalise.";
-  const formationSpecialisations = data?.formationSpecialisations ?? ["Soins du visage avancés", "Peelings chimiques AHA/BHA", "Analyse et bilan cutané", "Soins adaptés peaux sensibles"];
-  const formationCertifications = data?.formationCertifications ?? ["Esthéticienne certifiée", "Peeling chimique professionnel", "Soins de la peau — niveau avancé"];
+  const formationTitre = data?.formationTitre ?? (locale === "en" ? "Certified and trained at the source" : "Certifiée et formée à la source");
+  const formationTexte1 = data?.formationTexte1 ?? (locale === "en" ? "It is at Académie Aya Benzekri that Hanane acquired the solid foundations and advanced techniques that define her approach today. Rigorous training focused on mastering facial treatments, chemical peeling and protocols adapted to all skin types." : "C'est à l'Académie Aya Benzekri que Hanane a acquis les bases solides et les techniques avancées qui définissent aujourd'hui son approche. Une formation rigoureuse axée sur la maîtrise des soins du visage, des peelings chimiques et des protocoles adaptés à tous les types de peau.");
+  const formationTexte2 = data?.formationTexte2 ?? (locale === "en" ? "Recognized for the excellence of its teaching, Académie Aya Benzekri trains professional estheticians with constant attention to detail, hygiene and results — values that Hanane applies to every treatment she performs." : "Reconnue pour l'excellence de son enseignement, l'Académie Aya Benzekri forme des esthéticiennes professionnelles avec un souci constant du détail, de l'hygiène et du résultat. Des valeurs que Hanane applique à chaque soin qu'elle réalise.");
+  const formationSpecialisations = data?.formationSpecialisations ?? (locale === "en" ? ["Advanced facial treatments", "AHA/BHA chemical peels", "Skin analysis and assessment", "Treatments for sensitive skin"] : ["Soins du visage avancés", "Peelings chimiques AHA/BHA", "Analyse et bilan cutané", "Soins adaptés peaux sensibles"]);
+  const formationCertifications = data?.formationCertifications ?? (locale === "en" ? ["Certified esthetician", "Professional chemical peeling", "Skincare — advanced level"] : ["Esthéticienne certifiée", "Peeling chimique professionnel", "Soins de la peau — niveau avancé"]);
 
   return (
     <>

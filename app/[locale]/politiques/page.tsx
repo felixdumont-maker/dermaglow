@@ -130,8 +130,8 @@ export default async function PolitiquesPage() {
     getPagePolitiques(),
   ]);
 
-  const heroTitre = pageData?.heroTitre ?? "Politiques et informations";
-  const heroSousTitre = pageData?.heroSousTitre ?? "Tout ce que vous devez savoir avant votre visite chez Dermaglow by Hanane.";
+  const heroTitre = pageData?.heroTitre ?? (locale === "en" ? "Policies & information" : "Politiques et informations");
+  const heroSousTitre = pageData?.heroSousTitre ?? (locale === "en" ? "Everything you need to know before your visit to Dermaglow by Hanane." : "Tout ce que vous devez savoir avant votre visite chez Dermaglow by Hanane.");
   const sections = pageData?.sections && pageData.sections.length > 0
     ? pageData.sections.map((s, i) => ({
         numero: String(i + 1).padStart(2, "0"),

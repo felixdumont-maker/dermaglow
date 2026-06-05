@@ -122,14 +122,21 @@ export default async function HomePage() {
     ? faqData.map((f) => ({ question: f.question, answer: f.reponse }))
     : undefined;
 
-  const faqSchemaItems = (faqItems ?? [
+  const faqSchemaItems = (faqItems ?? (locale === "en" ? [
+    { question: "How do I book an appointment?", answer: "You can book directly online via our booking form, available 24/7. You can also email us at dermaglowbyhanane@gmail.com." },
+    { question: "Is the consultation included in the first treatment?", answer: "Yes, every new client receives a personalized skin analysis included in their first treatment." },
+    { question: "How long does a treatment take?", answer: "From 30 minutes for the Professional Peeling to 90 minutes for the Signature Facial + Massage. Each treatment is detailed on the Services page." },
+    { question: "Is peeling suitable for all skin types?", answer: "A prior consultation is mandatory. It allows us to choose the formula best suited to your skin for optimal results in complete safety." },
+    { question: "How should I prepare before a treatment?", answer: "Arrive without makeup if possible. Avoid acids or retinoids 48 hours before your appointment." },
+    { question: "Do you offer treatments for men?", answer: "Absolutely. All treatments are open to everyone, regardless of gender." },
+  ] : [
     { question: "Comment prendre rendez-vous ?", answer: "Vous pouvez réserver directement en ligne via notre formulaire de réservation, disponible 24 h/24. Vous pouvez aussi nous écrire à dermaglowbyhanane@gmail.com." },
     { question: "La consultation est-elle incluse dans le premier soin ?", answer: "Oui, chaque nouvelle cliente bénéficie d'une analyse de peau personnalisée incluse dans son premier soin." },
     { question: "Combien de temps dure un soin ?", answer: "De 30 minutes pour le Peeling Professionnel jusqu'à 90 minutes pour le Facial Signature + Massage. Chaque soin est détaillé sur la page Services." },
     { question: "Le peeling convient-il à tous les types de peau ?", answer: "Une consultation préalable est obligatoire. Elle permet de choisir la formule adaptée à votre peau pour un résultat optimal en toute sécurité." },
     { question: "Comment me préparer avant un soin ?", answer: "Arrivez sans maquillage si possible. Évitez les acides ou rétinoïdes 48h avant votre rendez-vous." },
     { question: "Offrez-vous des soins pour hommes ?", answer: "Absolument. Tous les soins sont ouverts à tous, peu importe le genre." },
-  ]);
+  ]));
 
   const faqSchema = {
     "@context": "https://schema.org",
@@ -146,11 +153,11 @@ export default async function HomePage() {
   const courriel = settings?.courriel ?? "dermaglowbyhanane@gmail.com";
   const horaires = settings?.horaires ?? DEFAULT_HORAIRES;
 
-  const heroTitre = pageData?.heroTitre ?? "Révélez votre éclat naturel";
-  const heroSousTitre = pageData?.heroSousTitre ?? "Des soins sur mesure conçus pour sublimer votre peau avec douceur, expertise et intention.";
-  const approcheTitre = pageData?.approcheTitre ?? "La peau mérite une attention singulière";
-  const approcheTexte1 = pageData?.approcheTexte1 ?? "Chez Dermaglow by Hanane, chaque soin commence par une analyse approfondie. La beauté véritable naît d'un équilibre entre science et douceur.";
-  const approcheTexte2 = pageData?.approcheTexte2 ?? "Avec des produits soigneusement sélectionnés et des techniques éprouvées, je vous accompagne vers une peau plus saine, lumineuse et en harmonie avec vous.";
+  const heroTitre = pageData?.heroTitre ?? (locale === "en" ? "Reveal your natural glow" : "Révélez votre éclat naturel");
+  const heroSousTitre = pageData?.heroSousTitre ?? (locale === "en" ? "Bespoke treatments designed to illuminate your skin with gentleness, expertise and intention." : "Des soins sur mesure conçus pour sublimer votre peau avec douceur, expertise et intention.");
+  const approcheTitre = pageData?.approcheTitre ?? (locale === "en" ? "Your skin deserves singular attention" : "La peau mérite une attention singulière");
+  const approcheTexte1 = pageData?.approcheTexte1 ?? (locale === "en" ? "At Dermaglow by Hanane, every treatment begins with a thorough skin analysis. True beauty is born from the balance between science and gentleness." : "Chez Dermaglow by Hanane, chaque soin commence par une analyse approfondie. La beauté véritable naît d'un équilibre entre science et douceur.");
+  const approcheTexte2 = pageData?.approcheTexte2 ?? (locale === "en" ? "With carefully selected products and proven techniques, I guide you towards healthier, more radiant skin that feels in harmony with who you are." : "Avec des produits soigneusement sélectionnés et des techniques éprouvées, je vous accompagne vers une peau plus saine, lumineuse et en harmonie avec vous.");
   const approcheImageSrc = pageData?.approcheImage ? urlFor(pageData.approcheImage).url() : "/portrait-hanane.jpg";
   const soinsImageSrc = pageData?.soinsImage ? urlFor(pageData.soinsImage).url() : "/soins-featured.jpg";
 
